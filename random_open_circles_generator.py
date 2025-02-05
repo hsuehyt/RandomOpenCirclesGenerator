@@ -59,6 +59,9 @@ class RandomNurbsCirclesUI:
         # Attach Curves Button
         cmds.button(label="Attach Curves", command=self.open_attach_curves_options)
 
+        # Open/Close Curves Button
+        cmds.button(label="Open/Close Curves", command=self.open_open_close_curve_options)
+
         # Delete History Button
         cmds.button(label="Delete History", command=self.delete_history)
 
@@ -81,6 +84,11 @@ class RandomNurbsCirclesUI:
     def open_attach_curves_options(self, *args):
         """Open Maya's onboard Attach Curves Options window."""
         cmds.AttachCurveOptions()
+
+    def open_open_close_curve_options(self, *args):
+        """Open Maya's onboard Open/Close Curve Options window."""
+        cmds.evalDeferred(lambda: cmds.menu('CurvesMenu', edit=True, postMenuCommand=True))
+        cmds.evalDeferred(lambda: cmds.OpenCloseCurveOptions())
 
     def delete_history(self, *args):
         """Delete history of the selected objects."""
