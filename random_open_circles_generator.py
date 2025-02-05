@@ -53,6 +53,9 @@ class RandomNurbsCirclesUI:
         # Generate Button
         self.generate_button = cmds.button(label="Generate Circles", command=self.generate_circles)
 
+        # Reverse Curve Button
+        cmds.button(label="Reverse Curves", command=self.open_reverse_curve_options)
+
         # Attach Curves Button
         cmds.button(label="Attach Curves", command=self.open_attach_curves_options)
 
@@ -70,6 +73,10 @@ class RandomNurbsCirclesUI:
 
         # Show the UI
         cmds.showWindow(self.window)
+
+    def open_reverse_curve_options(self, *args):
+        """Open Maya's onboard Reverse Curve Options window."""
+        cmds.ReverseCurveOptions()
 
     def open_attach_curves_options(self, *args):
         """Open Maya's onboard Attach Curves Options window."""

@@ -1,7 +1,3 @@
-Here’s the updated README with the script name:
-
----
-
 # Random Open Circles Generator
 
 ### Overview
@@ -16,6 +12,7 @@ The **Random Open Circles Generator** is a Python script for Autodesk Maya that 
   - Random seed for reproducibility
 - Integrated live update mode for real-time adjustments.
 - Curve management utilities:
+  - Reverse curves
   - Attach curves
   - Smooth curves
   - Curl curves
@@ -43,10 +40,11 @@ The **Random Open Circles Generator** is a Python script for Autodesk Maya that 
 4. **Generate Circles**:
    - Click the `Generate Circles` button to create the circles on the selected mesh.
 5. **Use Curve Management Tools**:
-   - Utilize buttons like `Attach Curves`, `Curl Curves`, `Smooth Curves`, or `Delete History` to manage generated curves.
+   - Utilize buttons like `Reverse Curves`, `Attach Curves`, `Curl Curves`, `Smooth Curves`, or `Delete History` to manage generated curves.
 
 ### Buttons Description
 - **Generate Circles**: Creates randomized open NURBS circles based on the current settings.
+- **Reverse Curves**: Opens Maya's `Reverse Curve Options` window to reverse the direction of selected curves.
 - **Attach Curves**: Opens Maya's `Attach Curves Options`.
 - **Delete History**: Deletes construction history of the selected objects.
 - **Curl Curves**: Opens Maya's `Curl Curves Options`.
@@ -65,7 +63,3 @@ Feel free to submit pull requests or raise issues for enhancements or bug fixes.
 
 ### Author
 [Hsuehyt](https://github.com/hsuehyt)
-
----
-
-Let me know if you need further adjustments! 🚀
