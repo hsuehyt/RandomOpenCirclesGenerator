@@ -59,17 +59,14 @@ class RandomNurbsCirclesUI:
         # Attach Curves Button
         cmds.button(label="Attach Curves", command=self.open_attach_curves_options)
 
-        # Open/Close Curves Button
-        cmds.button(label="Open/Close Curves", command=self.open_open_close_curve_options)
-
-        # Delete History Button
-        cmds.button(label="Delete History", command=self.delete_history)
-
         # Curl Curves Button
         cmds.button(label="Curl Curves", command=self.open_curl_curves_options)
 
         # Smooth Curves Button
         cmds.button(label="Smooth Curves", command=self.open_smooth_curves_options)
+
+        # Open/Close Curves Button
+        cmds.button(label="Open/Close Curves", command=self.open_open_close_curve_options)
 
         # Reset Button
         cmds.button(label="Reset to Default", command=self.reset_defaults)
