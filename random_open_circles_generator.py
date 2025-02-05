@@ -4,7 +4,7 @@ import maya.OpenMaya as om
 
 class RandomNurbsCirclesUI:
     def __init__(self):
-        self.window_name = "RandomNURBSCirclesUI"
+        self.window_name = "RandomOpenCirclesGenerator"
         self.num_circles = 10
         self.min_radius = 10
         self.max_radius = 100
@@ -23,7 +23,7 @@ class RandomNurbsCirclesUI:
             cmds.deleteUI(self.window_name)
 
         # Create a new window
-        self.window = cmds.window(self.window_name, title="Random NURBS Circles Generator", widthHeight=(300, 400))
+        self.window = cmds.window(self.window_name, title="Random Open Circles Generator", widthHeight=(300, 400))
         cmds.columnLayout(adjustableColumn=True)
 
         # Number of circles slider
