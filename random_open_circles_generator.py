@@ -11,6 +11,7 @@ class RandomNurbsCirclesUI:
         self.random_seed = 42
         self.delete_previous = True
         self.live_update = True
+        self.open_circles = True
         self.previous_circles = []
         self.last_selected_mesh = None
         self.sections = 8
@@ -40,9 +41,12 @@ class RandomNurbsCirclesUI:
         cmds.text(label="Sections:")
         self.sections_slider = cmds.intSliderGrp(field=True, minValue=4, maxValue=100, value=self.sections, step=1, changeCommand=self.on_slider_change, dragCommand=self.on_slider_change)
 
-        # Random Seed
+        # Open Circles toggle
+        self.open_circles_checkbox = cmds.checkBox(label="Open Circles", value=self.open_circles, changeCommand=self.on_toggle_update)
+
+        # Random Seed slider
         cmds.text(label="Random Seed:")
-        self.seed_field = cmds.intField(value=self.random_seed, changeCommand=self.on_seed_change)
+        self.seed_slider = cmds.intSliderGrp(field=True, minValue=0, maxValue=9999, value=self.random_seed, step=1, changeCommand=self.on_slider_change, dragCommand=self.on_slider_change)
 
         # Delete previous option
         self.delete_checkbox = cmds.checkBox(label="Delete Previous Circles", value=self.delete_previous, changeCommand=self.update_delete_option)
@@ -107,6 +111,12 @@ class RandomNurbsCirclesUI:
         """Enable or disable live update mode."""
         self.live_update = cmds.checkBox(self.live_update_checkbox, query=True, value=True)
 
+    def on_toggle_update(self, *args):
+        """Callback for the Open Circles toggle to handle live updates."""
+        self.open_circles = cmds.checkBox(self.open_circles_checkbox, query=True, value=True)
+        if self.live_update:
+            self.generate_circles()
+
     def reset_defaults(self, *args):
         """Reset all values to default."""
         self.num_circles = 10
@@ -115,15 +125,17 @@ class RandomNurbsCirclesUI:
         self.random_seed = 42
         self.delete_previous = True
         self.live_update = True
+        self.open_circles = True
         self.sections = 8
 
         cmds.intSliderGrp(self.num_circles_slider, edit=True, value=self.num_circles)
         cmds.floatSliderGrp(self.min_radius_slider, edit=True, value=self.min_radius)
         cmds.floatSliderGrp(self.max_radius_slider, edit=True, value=self.max_radius)
         cmds.intSliderGrp(self.sections_slider, edit=True, value=self.sections)
-        cmds.intField(self.seed_field, edit=True, value=self.random_seed)
+        cmds.intSliderGrp(self.seed_slider, edit=True, value=self.random_seed)
         cmds.checkBox(self.delete_checkbox, edit=True, value=self.delete_previous)
         cmds.checkBox(self.live_update_checkbox, edit=True, value=self.live_update)
+        cmds.checkBox(self.open_circles_checkbox, edit=True, value=self.open_circles)
 
         self.generate_circles()
 
@@ -133,8 +145,8 @@ class RandomNurbsCirclesUI:
             self.generate_circles()
 
     def on_seed_change(self, *args):
-        """Callback for the seed field to handle live updates."""
-        self.random_seed = cmds.intField(self.seed_field, query=True, value=True)
+        """Callback for the seed slider to handle live updates."""
+        self.random_seed = cmds.intSliderGrp(self.seed_slider, query=True, value=True)
         if self.live_update:
             self.generate_circles()
 
@@ -159,10 +171,15 @@ class RandomNurbsCirclesUI:
         self.min_radius = cmds.floatSliderGrp(self.min_radius_slider, query=True, value=True)
         self.max_radius = cmds.floatSliderGrp(self.max_radius_slider, query=True, value=True)
         self.sections = cmds.intSliderGrp(self.sections_slider, query=True, value=True)
-        self.random_seed = cmds.intField(self.seed_field, query=True, value=True)
+        self.random_seed = cmds.intSliderGrp(self.seed_slider, query=True, value=True)
+        self.open_circles = cmds.checkBox(self.open_circles_checkbox, query=True, value=True)
         self.delete_previous = cmds.checkBox(self.delete_checkbox, query=True, value=True)
 
-        if self.delete_previous:
+        if self.delete_previous and self.previous_circles:
+            existing_circles = [circle for circle in self.previous_circles if cmds.objExists(circle)]
+            if existing_circles:
+                cmds.delete(existing_circles)
+            self.previous_circles = []
             cmds.delete(self.previous_circles)
             self.previous_circles = []
 
@@ -189,12 +206,13 @@ class RandomNurbsCirclesUI:
             random_rotation = random.uniform(0, 360)
             cmds.xform(circle, rotation=(0, random_rotation, 0), objectSpace=True, relative=True)
 
-            # Open the circle using the closeCurve command
-            cmds.closeCurve(circle, replaceOriginal=True, preserveShape=False, blendBias=0.5, constructionHistory=False)
+            # Open the circle if the toggle is enabled
+            if self.open_circles:
+                cmds.closeCurve(circle, replaceOriginal=True, preserveShape=False, blendBias=0.5, constructionHistory=False)
 
             self.previous_circles.append(circle)
 
-        print(f"✅ Created {self.num_circles} open NURBS circles with radius range {self.min_radius} - {self.max_radius} and {self.sections} sections each.")
+        print(f"✅ Created {self.num_circles} NURBS circles with radius range {self.min_radius} - {self.max_radius} and {self.sections} sections each.")
 
     def get_random_point_and_normal(self, mesh, face_id):
         """Returns a random point on the given face and its normal."""
