@@ -1,75 +1,107 @@
 # Random Open Circles Generator
 
-### Overview
-The **Random Open Circles Generator** is a Python script for Autodesk Maya that generates randomized NURBS circles on selected polygon mesh surfaces. Users can control various parameters, including circle count, radius, sections, and whether the circles should be open or closed. The script also includes live update functionality for real-time adjustments.
+![Application Example](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step9_Application.png)
 
-### UI Preview
-![Random Open Circles Generator UI](images/RandomOpenCirclesGeneratorUI.png)
+## Overview
 
-### Features
-- Generate **randomized NURBS circles** aligned to surface normals and positioned randomly across polygon faces.
-- Customizable parameters:
-  - Number of circles
-  - Minimum and maximum radius
-  - Number of sections (4–100)
-  - Random seed for reproducibility
-  - Option to generate **open or closed** circles
-- Integrated **Live Update Mode** for real-time adjustments.
-- Curve management utilities:
-  - Reverse curves
-  - Attach curves
-  - Open/Close curves
-  - Smooth curves
-  - Curl curves
-- Reset parameters to default values with a single click.
+The **Random Open Circles Generator** is a script designed for 3D artists and modelers to procedurally generate open circles on mesh surfaces. This tool facilitates the creation of intricate patterns and designs, enhancing the detailing process in 3D modeling workflows.
 
-### Important Notes
-1. Maya's **Curl Curves** only works with curves that have **no history**.
-2. Maya's **Curl Curves** and **Smooth Curves** may not work with **closed curves**.
-3. If "Delete Previous Circles" is enabled, only **existing objects** will be deleted to prevent errors.
-4. Live Update ensures that **no object remains selected** after adjusting parameters.
+## Features
 
-### Installation
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/hsuehyt/RandomOpenCirclesGenerator.git
-   ```
-2. Locate the script file:
-   - `random_open_circles_generator.py`
-3. Open Autodesk Maya.
-4. Load the script in Maya:
-   - Copy and paste the script into Maya's **Script Editor** and execute it.
+- **Procedural Generation**: Automatically creates open circles on selected mesh surfaces.
+- **Customization**: Offers parameters to adjust the size, number, and distribution of circles.
+- **Integration**: Seamlessly integrates into existing 3D modeling software that supports scripting.
 
-### Usage
-1. **Run the Script**:
-   - Execute the script to open the user interface (UI).
-2. **Select a Mesh**:
-   - Choose a polygon mesh where you want the circles to be generated.
-3. **Adjust Parameters**:
-   - Set the number of circles, radius range, sections, and whether the circles should be open or closed.
-4. **Generate Circles**:
-   - Click the `Generate Circles` button to create the circles on the selected mesh.
-5. **Use Curve Management Tools**:
-   - Utilize buttons like `Reverse Curves`, `Attach Curves`, `Open/Close Curves`, `Curl Curves`, or `Smooth Curves` to manage generated curves.
+## Prerequisites
 
-### Buttons Description
-- **Generate Circles**: Creates randomized NURBS circles based on the current settings.
-- **Reverse Curves**: Opens Maya's `Reverse Curve Options` window to reverse the direction of selected curves.
-- **Attach Curves**: Opens Maya's `Attach Curves Options`.
-- **Open/Close Curves**: Opens Maya's `Open/Close Curve Options` window.
-- **Curl Curves**: Opens Maya's `Curl Curves Options`.
-- **Smooth Curves**: Opens Maya's `Smooth Curves Options`.
-- **Reset to Default**: Resets all parameters to their default values.
+- A 3D modeling application that supports scripting (e.g., Autodesk Maya, Blender).
+- Basic understanding of running scripts within your chosen 3D software.
 
-### Requirements
-- **Autodesk Maya 2023 or later**.
-- **Python 2.7+** (integrated with Maya).
+## Installation
 
-### License
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+1. **Download the Script**:
+   - Clone the repository or download the script file directly from the [GitHub repository](https://github.com/hsuehyt/RandomOpenCirclesGenerator).
 
-### Contribution
-Feel free to submit **pull requests** or raise **issues** for enhancements or bug fixes. Contributions are welcome!
+2. **Open Your 3D Software's Script Editor**:
+   - Launch your 3D modeling application.
+   - Navigate to the script editor or console where scripts can be executed.
 
-### Author
-[Hsuehyt](https://github.com/hsuehyt)
+## Usage
+
+Follow these steps to utilize the Random Open Circles Generator:
+
+1. **Paste the Code into the Script Editor**:
+   - Open the script editor in your 3D software.
+   - Copy the entire script from the downloaded file and paste it into the editor.
+
+   ![Step 1: Paste the code into the script editor](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step1_Paste-the-code-to-script-editor.png)
+
+2. **Execute the Code**:
+   - Run the script within the editor to initialize the generator.
+
+   ![Step 2: Execute the code](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step2_Excute-the-code.png)
+
+3. **Select Your Target Mesh**:
+   - In the 3D viewport, select the mesh surface where you want to generate open circles.
+
+   ![Step 3: Select your target mesh](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step3_Select-your-own-target-mesh.png)
+
+4. **Generate Open Circles**:
+   - Use the script's interface or commands to generate open circles on the selected mesh.
+
+   ![Step 4: Generate open circles](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step4_Generate-open-circles.png)
+
+5. **Attach the Circles**:
+   - Integrate the generated circles with the mesh as needed for your design.
+
+   ![Step 5: Attach the circles](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step5_Attach-the-circles.png)
+
+6. **Curl the Curve** (Optional):
+   - Apply transformations to curl or adjust the curves for desired effects.
+
+   ![Step 6: Curl the curve](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step6_Curl-the-curve.png)
+
+7. **Smooth the Curve** (Optional):
+   - Smooth the generated curves to refine their appearance.
+
+   ![Step 7: Smooth the curve](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step7_Smooth-the-curve.png)
+
+8. **Close the Curve** (Optional):
+   - Close any open curves if your design requires it.
+
+   ![Step 8: Close the curve](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step8_Close-the-curve.png)
+
+9. **Application Example**:
+   - View an example of the script applied to a mesh.
+
+   ![Step 9: Application example](https://raw.githubusercontent.com/hsuehyt/RandomOpenCirclesGenerator/main/images/Step9_Application.png)
+
+## Compatibility
+
+This script is written in **Python 3** and is compatible with **Autodesk Maya 2022 and later**. Since **Maya 2022** introduced Python 3 as the default, ensure your Maya version is running in Python 3 mode for proper execution.
+
+## Parameters
+
+The script provides several parameters to customize the generated circles:
+
+- **Circle Count**: Number of circles to generate.
+- **Radius Range**: Minimum and maximum radius of the circles.
+- **Distribution Area**: Defines the area on the mesh where circles will be placed.
+- **Random Seed**: Seed value for randomization to ensure reproducibility.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions, bug reports, or improvements, please submit an issue or a pull request on the [GitHub repository](https://github.com/hsuehyt/RandomOpenCirclesGenerator).
+
+## License
+
+This project is licensed under the [MIT License](https://github.com/hsuehyt/RandomOpenCirclesGenerator/blob/main/LICENSE).
+
+## Acknowledgments
+
+Special thanks to the contributors and the open-source community for their support and collaboration.
+
+---
+
+*Note: Ensure that your 3D modeling software supports the execution of external scripts and always back up your work before running new scripts.*
+
